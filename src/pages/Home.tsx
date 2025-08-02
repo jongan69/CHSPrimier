@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Shield, Clock, Award } from 'lucide-react';
 import TestimonialsSlider from '../components/TestimonialsSlider';
+import useStaggeredAnimation from '../hooks/useStaggeredAnimation';
 
 const Home = () => {
   const services = [
@@ -47,6 +48,11 @@ const Home = () => {
     }
   ];
 
+  // Staggered animations for different sections
+  const heroAnimation = useStaggeredAnimation(3, 200, 300); // Title, subtitle, buttons
+  const servicesAnimation = useStaggeredAnimation(3, 150, 500); // Service cards
+  const featuresAnimation = useStaggeredAnimation(4, 100, 800); // Feature cards
+
   return (
     <div className="pt-24">
       {/* Hero Section */}
@@ -58,15 +64,27 @@ const Home = () => {
         ></div>
         
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 font-luxury">
+          <h1 className={`text-5xl md:text-7xl font-bold mb-6 font-luxury transition-all duration-700 ease-out ${
+            heroAnimation.isVisible(0) 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}>
             <span className="block">Premier</span>
             <span className="text-gold-400 bg-gradient-to-r from-gold-400 to-gold-300 bg-clip-text text-transparent">Luxury Services</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed text-gray-200">
+          <p className={`text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed text-gray-200 transition-all duration-700 ease-out delay-200 ${
+            heroAnimation.isVisible(1) 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}>
             Experience unparalleled luxury with our comprehensive transportation, charter, and courier services. 
             Where elegance meets reliability.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-700 ease-out delay-400 ${
+            heroAnimation.isVisible(2) 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}>
             <Link
               to="/booking"
               className="bg-gradient-to-r from-gold-400 to-gold-500 text-rich-black-900 px-8 py-4 rounded-lg font-semibold text-lg hover:from-gold-300 hover:to-gold-400 transition-all transform hover:scale-105 flex items-center justify-center space-x-2 shadow-gold"
@@ -97,7 +115,14 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-gold-lg transition-all transform hover:-translate-y-2 border border-gray-100">
+              <div 
+                key={index} 
+                className={`bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-gold-lg transition-all transform hover:-translate-y-2 border border-gray-100 duration-700 ease-out ${
+                  servicesAnimation.isVisible(index) 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
+              >
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src={service.image} 
@@ -134,7 +159,14 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="text-center group">
+              <div 
+                key={index} 
+                className={`text-center group transition-all duration-700 ease-out ${
+                  featuresAnimation.isVisible(index) 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
+              >
                 <div className="bg-gradient-to-r from-gold-400 to-gold-500 text-rich-black-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-gold group-hover:shadow-gold-lg transition-all transform group-hover:scale-110">
                   {feature.icon}
                 </div>
