@@ -42,9 +42,9 @@ const Booking = () => {
   return (
     <div className="pt-24">
       {/* Hero Section */}
-      <section className="py-16 bg-slate-900 text-white">
+      <section className="py-16 bg-rich-black-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Book Your Premium Service</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-luxury">Book Your Premium Service</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Reserve your luxury transportation, boat charter, or courier service with our easy booking system.
           </p>
@@ -58,14 +58,14 @@ const Booking = () => {
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Service Selection */}
               <div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-6">Select Your Service</h2>
+                <h2 className="text-2xl font-bold text-rich-black-900 mb-6">Select Your Service</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {services.map((service) => (
                     <label
                       key={service.value}
                       className={`relative flex items-center justify-center p-6 border-2 rounded-xl cursor-pointer transition-all ${
                         formData.service === service.value
-                          ? 'border-yellow-400 bg-yellow-50'
+                          ? 'border-gold-400 bg-gold-50'
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
                     >
@@ -79,11 +79,11 @@ const Booking = () => {
                       />
                       <div className="text-center">
                         <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-3 ${
-                          formData.service === service.value ? 'bg-yellow-400 text-slate-900' : 'bg-gray-100 text-gray-600'
+                          formData.service === service.value ? 'bg-gold-400 text-rich-black-900' : 'bg-gray-100 text-gray-600'
                         }`}>
                           {service.icon}
                         </div>
-                        <div className="font-semibold text-slate-900">{service.label}</div>
+                        <div className="font-semibold text-rich-black-900">{service.label}</div>
                       </div>
                     </label>
                   ))}
@@ -93,7 +93,7 @@ const Booking = () => {
               {/* Date and Time */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-900 mb-2">
+                  <label className="block text-sm font-semibold text-rich-black-900 mb-2">
                     <Calendar className="w-4 h-4 inline mr-2" />
                     Preferred Date
                   </label>
@@ -107,7 +107,7 @@ const Booking = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-900 mb-2">
+                  <label className="block text-sm font-semibold text-rich-black-900 mb-2">
                     <Clock className="w-4 h-4 inline mr-2" />
                     Preferred Time
                   </label>
@@ -142,10 +142,10 @@ const Booking = () => {
 
               {/* Location Information */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-slate-900">Location Details</h3>
+                <h3 className="text-lg font-semibold text-rich-black-900">Location Details</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-slate-900 mb-2">
+                    <label className="block text-sm font-semibold text-rich-black-900 mb-2">
                       <MapPin className="w-4 h-4 inline mr-2" />
                       {formData.service === 'courier' ? 'Pickup Address' : 
                        formData.service === 'boat' ? 'Departure Marina' : 'Pickup Location'}
@@ -162,7 +162,7 @@ const Booking = () => {
                   </div>
                   {formData.service !== 'boat' && (
                     <div>
-                      <label className="block text-sm font-semibold text-slate-900 mb-2">
+                      <label className="block text-sm font-semibold text-rich-black-900 mb-2">
                         <MapPin className="w-4 h-4 inline mr-2" />
                         {formData.service === 'courier' ? 'Delivery Address' : 'Destination'}
                       </label>
@@ -184,7 +184,7 @@ const Booking = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {formData.service !== 'courier' && (
                   <div>
-                    <label className="block text-sm font-semibold text-slate-900 mb-2">
+                    <label className="block text-sm font-semibold text-rich-black-900 mb-2">
                       <Users className="w-4 h-4 inline mr-2" />
                       Number of {formData.service === 'boat' ? 'Guests' : 'Passengers'}
                     </label>
@@ -203,7 +203,7 @@ const Booking = () => {
                   </div>
                 )}
                 <div>
-                  <label className="block text-sm font-semibold text-slate-900 mb-2">
+                  <label className="block text-sm font-semibold text-rich-black-900 mb-2">
                     <Clock className="w-4 h-4 inline mr-2" />
                     {formData.service === 'courier' ? 'Delivery Type' : 'Duration'}
                   </label>
@@ -244,10 +244,10 @@ const Booking = () => {
 
               {/* Contact Information */}
               <div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-4">Contact Information</h3>
+                <h3 className="text-lg font-semibold text-rich-black-900 mb-4">Contact Information</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-slate-900 mb-2">First Name</label>
+                    <label className="block text-sm font-semibold text-rich-black-900 mb-2">First Name</label>
                     <input
                       type="text"
                       name="firstName"
@@ -258,7 +258,7 @@ const Booking = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-slate-900 mb-2">Last Name</label>
+                    <label className="block text-sm font-semibold text-rich-black-900 mb-2">Last Name</label>
                     <input
                       type="text"
                       name="lastName"
@@ -269,7 +269,7 @@ const Booking = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-slate-900 mb-2">
+                    <label className="block text-sm font-semibold text-rich-black-900 mb-2">
                       <Mail className="w-4 h-4 inline mr-2" />
                       Email Address
                     </label>
@@ -283,7 +283,7 @@ const Booking = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-slate-900 mb-2">
+                    <label className="block text-sm font-semibold text-rich-black-900 mb-2">
                       <Phone className="w-4 h-4 inline mr-2" />
                       Phone Number
                     </label>
@@ -298,7 +298,7 @@ const Booking = () => {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <label className="block text-sm font-semibold text-slate-900 mb-2">
+                  <label className="block text-sm font-semibold text-rich-black-900 mb-2">
                     Company (Optional)
                   </label>
                   <input
@@ -314,7 +314,7 @@ const Booking = () => {
 
               {/* Special Requests */}
               <div>
-                <label className="block text-sm font-semibold text-slate-900 mb-2">
+                <label className="block text-sm font-semibold text-rich-black-900 mb-2">
                   Special Requests or Additional Information
                 </label>
                 <textarea
@@ -331,7 +331,7 @@ const Booking = () => {
               <div className="text-center">
                 <button
                   type="submit"
-                  className="bg-yellow-400 text-slate-900 px-12 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-300 transition-all transform hover:scale-105 shadow-lg"
+                  className="bg-gradient-to-r from-gold-400 to-gold-500 text-rich-black-900 px-12 py-4 rounded-lg font-semibold text-lg hover:from-gold-300 hover:to-gold-400 transition-all transform hover:scale-105 shadow-gold"
                 >
                   Submit Booking Request
                 </button>
@@ -345,7 +345,7 @@ const Booking = () => {
       </section>
 
       {/* Contact Info */}
-      <section className="py-16 bg-slate-900 text-white">
+      <section className="py-16 bg-rich-black-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Need Immediate Assistance?</h2>
@@ -356,7 +356,7 @@ const Booking = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="bg-yellow-400 text-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-yellow-400 text-rich-black-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Phone className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Call Us</h3>
@@ -365,7 +365,7 @@ const Booking = () => {
             </div>
             
             <div className="text-center">
-              <div className="bg-yellow-400 text-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-yellow-400 text-rich-black-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Email Us</h3>
@@ -374,7 +374,7 @@ const Booking = () => {
             </div>
             
             <div className="text-center">
-              <div className="bg-yellow-400 text-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-yellow-400 text-rich-black-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Quick Response</h3>

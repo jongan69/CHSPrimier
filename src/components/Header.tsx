@@ -46,8 +46,8 @@ const Header = () => {
   return (
     <header className={`fixed w-full z-50 transition-all duration-500 ${
       isScrolled
-        ? 'bg-slate-900/90 backdrop-blur-md shadow-md'
-        : 'bg-slate-900/80 backdrop-blur-md'
+        ? 'bg-rich-black-900/95 backdrop-blur-md shadow-lg border-b border-gold-400/20'
+        : 'bg-rich-black-900/90 backdrop-blur-md'
     }`}>
       {/* Top Bar */}
       <div className={`text-white px-4 text-sm transition-all duration-300 ${
@@ -64,7 +64,7 @@ const Header = () => {
               info@chpremierservices.com
             </span>
           </div>
-          <span className="text-yellow-400 font-semibold">24/7 Premium Service</span>
+          <span className="text-gold-400 font-semibold">24/7 Premium Service</span>
         </div>
       </div>
 
@@ -73,12 +73,12 @@ const Header = () => {
         <div className="flex justify-between items-center py-6">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-4">
-            <div className="bg-yellow-400 text-slate-900 font-extrabold text-2xl px-3 py-2 rounded-xl shadow-sm">
+            <div className="bg-gradient-to-r from-gold-400 to-gold-500 text-rich-black-900 font-extrabold text-2xl px-3 py-2 rounded-xl shadow-gold">
               CH
             </div>
             <div className="text-white leading-tight">
-              <div className="font-extrabold text-xl">Premier Services</div>
-              <div className="text-sm text-gray-400">Luxury • Reliability • Excellence</div>
+              <div className="font-extrabold text-xl font-luxury">Premier Services</div>
+              <div className="text-sm text-gold-300">Luxury • Reliability • Excellence</div>
             </div>
           </Link>
 
@@ -92,22 +92,22 @@ const Header = () => {
                     onMouseLeave={closeDropdown}
                   >
                     <button
-                      className={`flex items-center gap-1 text-white font-medium transition-all hover:text-yellow-400 ${
-                        isActiveRoute(item.path) ? 'text-yellow-400' : ''
+                      className={`flex items-center gap-1 text-white font-medium transition-all hover:text-gold-400 ${
+                        isActiveRoute(item.path) ? 'text-gold-400' : ''
                       }`}
                     >
                       {item.name}
                       <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
                     </button>
-                    <div className={`absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50 transition-all duration-200 ${
+                    <div className={`absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-gold-lg border border-gold-100 py-2 z-50 transition-all duration-200 ${
                       activeDropdown === item.name ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
                     }`}>
                       {item.submenu.map((subItem) => (
                         <Link
                           key={subItem.name}
                           to={subItem.path}
-                          className={`block px-4 py-2 text-slate-700 rounded-md hover:bg-yellow-50 hover:text-yellow-600 transition ${
-                            location.pathname === subItem.path ? 'bg-yellow-50 text-yellow-600 font-semibold' : ''
+                          className={`block px-4 py-2 text-rich-black-700 rounded-md hover:bg-gold-50 hover:text-gold-600 transition ${
+                            location.pathname === subItem.path ? 'bg-gold-50 text-gold-600 font-semibold' : ''
                           }`}
                           onClick={closeDropdown}
                         >
@@ -119,8 +119,8 @@ const Header = () => {
                 ) : (
                   <Link
                     to={item.path}
-                    className={`text-white font-medium transition hover:text-yellow-400 ${
-                      isActiveRoute(item.path) ? 'text-yellow-400' : ''
+                    className={`text-white font-medium transition hover:text-gold-400 ${
+                      isActiveRoute(item.path) ? 'text-gold-400' : ''
                     }`}
                   >
                     {item.name}
@@ -130,7 +130,7 @@ const Header = () => {
             ))}
             <Link
               to="/booking"
-              className="bg-yellow-400 text-slate-900 px-6 py-2 rounded-xl font-semibold shadow hover:bg-yellow-300 transition transform hover:scale-105"
+              className="bg-gradient-to-r from-gold-400 to-gold-500 text-rich-black-900 px-6 py-2 rounded-xl font-semibold shadow-gold hover:shadow-gold-lg transition transform hover:scale-105"
             >
               Get Quote
             </Link>
@@ -148,26 +148,26 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-slate-900/95 backdrop-blur border-t border-slate-700 py-4">
+          <div className="md:hidden bg-rich-black-900/95 backdrop-blur border-t border-gold-400/20 py-4">
             {navigation.map((item) => (
               <div key={item.name} className="mb-2">
                 <Link
                   to={item.path}
-                  className={`block px-4 py-3 text-white font-medium transition hover:text-yellow-400 ${
-                    isActiveRoute(item.path) ? 'text-yellow-400' : ''
+                  className={`block px-4 py-3 text-white font-medium transition hover:text-gold-400 ${
+                    isActiveRoute(item.path) ? 'text-gold-400' : ''
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
                 {item.submenu && (
-                  <div className="ml-4 pl-4 border-l border-slate-700">
+                  <div className="ml-4 pl-4 border-l border-gold-400/30">
                     {item.submenu.slice(1).map((subItem) => (
                       <Link
                         key={subItem.name}
                         to={subItem.path}
-                        className={`block py-2 text-sm text-gray-300 hover:text-yellow-400 transition ${
-                          location.pathname === subItem.path ? 'text-yellow-400' : ''
+                        className={`block py-2 text-sm text-gray-300 hover:text-gold-400 transition ${
+                          location.pathname === subItem.path ? 'text-gold-400' : ''
                         }`}
                         onClick={() => setIsMenuOpen(false)}
                       >
@@ -180,7 +180,7 @@ const Header = () => {
             ))}
             <Link
               to="/booking"
-              className="block mt-4 mx-4 bg-yellow-400 text-slate-900 text-center px-6 py-3 rounded-xl font-semibold shadow hover:bg-yellow-300 transition"
+              className="block mt-4 mx-4 bg-gradient-to-r from-gold-400 to-gold-500 text-rich-black-900 text-center px-6 py-3 rounded-xl font-semibold shadow-gold hover:shadow-gold-lg transition"
               onClick={() => setIsMenuOpen(false)}
             >
               Get Quote

@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  .font-luxury {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .gold-gradient {
+    background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+  }
+  
+  .black-gradient {
+    background: linear-gradient(135deg, #171717 0%, #262626 100%);
+  }
+  
+  .gold-shadow {
+    box-shadow: 0 4px 14px 0 rgba(250, 204, 21, 0.25);
+  }
+  
+  .gold-shadow-lg {
+    box-shadow: 0 10px 25px 0 rgba(250, 204, 21, 0.3);
+  }
+}

@@ -1,231 +1,194 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, MessageSquare } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    subject: '',
     service: '',
     message: ''
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Contact form submitted:', formData);
-    alert('Thank you for contacting us! We will get back to you within 24 hours.');
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      service: '',
-      message: ''
-    });
-  };
-
   const contactInfo = [
     {
-      icon: <Phone className="w-6 h-6" />,
+      icon: <Phone className="w-8 h-8" />,
       title: 'Phone',
-      details: ['(555) 123-4567', 'Available 24/7'],
+      details: ['(555) 123-4567', '(555) 987-6543'],
       link: 'tel:+15551234567'
     },
     {
-      icon: <Mail className="w-6 h-6" />,
+      icon: <Mail className="w-8 h-8" />,
       title: 'Email',
-      details: ['info@chpremierservices.com', 'Response within 2 hours'],
+      details: ['info@chpremierservices.com', 'support@chpremierservices.com'],
       link: 'mailto:info@chpremierservices.com'
     },
     {
-      icon: <MapPin className="w-6 h-6" />,
+      icon: <MapPin className="w-8 h-8" />,
       title: 'Address',
       details: ['123 Luxury Ave', 'Premium City, PC 12345'],
-      link: 'https://maps.google.com'
+      link: '#'
     },
     {
-      icon: <Clock className="w-6 h-6" />,
-      title: 'Business Hours',
-      details: ['24/7 Service Available', 'Office: Mon-Fri 8AM-6PM'],
-      link: null
+      icon: <Clock className="w-8 h-8" />,
+      title: 'Hours',
+      details: ['24/7 Service Available', 'Emergency calls welcome'],
+      link: '#'
     }
   ];
 
   const serviceAreas = [
-    'Downtown Core',
-    'Metropolitan Area',
-    'Airport Districts',
-    'Greater Region',
-    'Surrounding Counties'
+    'Downtown Premium City',
+    'Luxury Heights',
+    'Executive District',
+    'Waterfront Estates',
+    'Business Center',
+    'Airport Zone',
+    'Resort Area',
+    'Corporate Park'
   ];
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission
+    console.log('Form submitted:', formData);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   return (
     <div className="pt-24">
       {/* Hero Section */}
-      <section className="py-16 bg-slate-900 text-white">
+      <section className="py-16 bg-rich-black-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact CH Premier Services</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Get in touch with us for bookings, questions, or to learn more about our premium services. 
-            We're here to help 24/7.
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 font-luxury">Contact Us</h1>
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
+            Ready to experience premium service? Get in touch with us today for personalized quotes, 
+            bookings, or any questions about our luxury services.
           </p>
         </div>
       </section>
 
-      {/* Contact Information Cards */}
-      <section className="py-20 bg-gray-50">
+      {/* Contact Info */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {contactInfo.map((info, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-center">
-                <div className="bg-yellow-400 text-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div key={index} className="text-center p-6">
+                <div className="bg-gradient-to-r from-gold-400 to-gold-500 text-rich-black-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-gold">
                   {info.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">{info.title}</h3>
-                <div className="space-y-1">
-                  {info.details.map((detail, i) => (
-                    <p key={i} className={i === 0 ? 'text-slate-900 font-medium' : 'text-gray-600 text-sm'}>
-                      {info.link && i === 0 ? (
-                        <a href={info.link} className="hover:text-yellow-600 transition-colors">
-                          {detail}
-                        </a>
-                      ) : (
-                        detail
-                      )}
-                    </p>
-                  ))}
-                </div>
+                <h3 className="text-xl font-semibold text-rich-black-900 mb-3">{info.title}</h3>
+                {info.details.map((detail, i) => (
+                  <p key={i} className={i === 0 ? 'text-rich-black-900 font-medium' : 'text-gray-600 text-sm'}>
+                    <a href={info.link} className="hover:text-gold-600 transition-colors">
+                      {detail}
+                    </a>
+                  </p>
+                ))}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form and Map */}
-      <section className="py-20 bg-white">
+      {/* Contact Form & Map */}
+      <section className="py-20 bg-gradient-to-b from-rich-black-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <div className="mb-8">
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">Send Us a Message</h2>
-                <p className="text-lg text-gray-600">
-                  Have a question or ready to book? Fill out the form below and we'll get back to you promptly.
-                </p>
-              </div>
-
+              <h2 className="text-3xl font-bold text-rich-black-900 mb-4 font-luxury">Send Us a Message</h2>
+              <p className="text-rich-black-600 mb-8">
+                Fill out the form below and we'll get back to you within 24 hours. 
+                For urgent requests, please call us directly.
+              </p>
+              
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-slate-900 mb-2">
-                      Full Name
+                    <label className="block text-sm font-semibold text-rich-black-900 mb-2">
+                      First Name *
                     </label>
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
-                      onChange={handleInputChange}
+                      onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-                      placeholder="Your full name"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-transparent"
                     />
                   </div>
-                  
                   <div>
-                    <label className="block text-sm font-semibold text-slate-900 mb-2">
-                      Email Address
+                    <label className="block text-sm font-semibold text-rich-black-900 mb-2">
+                      Email *
                     </label>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
-                      onChange={handleInputChange}
+                      onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-                      placeholder="your@email.com"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-transparent"
                     />
                   </div>
                 </div>
-
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-slate-900 mb-2">
+                    <label className="block text-sm font-semibold text-rich-black-900 mb-2">
                       Phone Number
                     </label>
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-                      placeholder="(555) 123-4567"
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-transparent"
                     />
                   </div>
-                  
                   <div>
-                    <label className="block text-sm font-semibold text-slate-900 mb-2">
+                    <label className="block text-sm font-semibold text-rich-black-900 mb-2">
                       Service Interest
                     </label>
                     <select
                       name="service"
                       value={formData.service}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-transparent"
                     >
                       <option value="">Select a service</option>
-                      <option value="limo">Limousine Service</option>
-                      <option value="boat">Boat Charter</option>
-                      <option value="courier">Courier Service</option>
-                      <option value="multiple">Multiple Services</option>
-                      <option value="other">Other</option>
+                      <option value="limo">Luxury Limousines</option>
+                      <option value="boat">Boat Charters</option>
+                      <option value="courier">Courier Services</option>
                     </select>
                   </div>
                 </div>
-
+                
                 <div>
-                  <label className="block text-sm font-semibold text-slate-900 mb-2">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-                    placeholder="What can we help you with?"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-slate-900 mb-2">
-                    Message
+                  <label className="block text-sm font-semibold text-rich-black-900 mb-2">
+                    Message *
                   </label>
                   <textarea
                     name="message"
                     value={formData.message}
-                    onChange={handleInputChange}
+                    onChange={handleChange}
+                    rows={5}
                     required
-                    rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-                    placeholder="Please provide details about your requirements, preferred dates, or any questions you have..."
-                  />
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-transparent"
+                    placeholder="Tell us about your requirements..."
+                  ></textarea>
                 </div>
-
+                
                 <button
                   type="submit"
-                  className="w-full bg-yellow-400 text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-300 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2"
+                  className="w-full bg-gradient-to-r from-gold-400 to-gold-500 text-rich-black-900 px-8 py-4 rounded-lg font-semibold text-lg hover:from-gold-300 hover:to-gold-400 transition-all transform hover:scale-105 shadow-gold flex items-center justify-center space-x-2"
                 >
                   <Send className="w-5 h-5" />
                   <span>Send Message</span>
@@ -233,79 +196,63 @@ const Contact = () => {
               </form>
             </div>
 
-            {/* Map and Additional Info */}
+            {/* Map & Service Areas */}
             <div>
-              <div className="mb-8">
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">Find Us</h2>
-                <p className="text-lg text-gray-600">
-                  We're located in the heart of the city, with easy access to all major transportation hubs.
-                </p>
-              </div>
-
-              {/* Embedded Map Placeholder */}
-              <div className="bg-gray-200 rounded-xl h-64 mb-8 flex items-center justify-center">
-                <div className="text-center text-gray-600">
-                  <MapPin className="w-12 h-12 mx-auto mb-2" />
-                  <p className="font-medium">Interactive Map</p>
-                  <p className="text-sm">123 Luxury Ave, Premium City, PC 12345</p>
+              <div className="bg-white rounded-xl shadow-gold-lg p-8 mb-8">
+                <h2 className="text-3xl font-bold text-rich-black-900 mb-4 font-luxury">Find Us</h2>
+                <div className="bg-gray-200 rounded-lg h-64 mb-6 flex items-center justify-center">
+                  <p className="text-gray-600">Interactive Map Coming Soon</p>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <MapPin className="w-5 h-5 text-gold-400" />
+                    <span className="text-rich-black-600">123 Luxury Ave, Premium City, PC 12345</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Clock className="w-5 h-5 text-gold-400" />
+                    <span className="text-rich-black-600">24/7 Service Available</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Service Areas */}
-              <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-xl font-semibold text-slate-900 mb-4">Service Areas</h3>
-                <p className="text-gray-600 mb-4">
-                  We provide premium services throughout the metropolitan area and beyond:
-                </p>
-                <ul className="space-y-2">
+              <div className="bg-white rounded-xl shadow-gold-lg p-8">
+                <h3 className="text-xl font-semibold text-rich-black-900 mb-4">Service Areas</h3>
+                <div className="grid grid-cols-2 gap-3">
                   {serviceAreas.map((area, index) => (
-                    <li key={index} className="flex items-center text-gray-700">
-                      <div className="w-2 h-2 bg-yellow-400 rounded-full mr-3"></div>
-                      {area}
-                    </li>
+                    <div key={index} className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-gold-400 rounded-full"></div>
+                      <span className="text-rich-black-600 text-sm">{area}</span>
+                    </div>
                   ))}
-                </ul>
-                <p className="text-sm text-gray-600 mt-4">
-                  Need service outside these areas? Contact us for custom arrangements.
-                </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Emergency Contact */}
-      <section className="py-16 bg-slate-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">Need Immediate Service?</h2>
-            <p className="text-xl text-gray-300 mb-8">
-              For urgent bookings or emergency situations, contact us directly.
-            </p>
-          </div>
-          
-          <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-b from-rich-black-900 to-rich-black-800 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold mb-4 font-luxury">Ready to Get Started?</h2>
+          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            Contact us today to discuss your requirements and receive a personalized quote 
+            for any of our luxury services.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/booking"
+              className="bg-gradient-to-r from-gold-400 to-gold-500 text-rich-black-900 px-8 py-4 rounded-lg font-semibold text-lg hover:from-gold-300 hover:to-gold-400 transition-all flex items-center space-x-2 shadow-gold"
+            >
+              <span>Book Service Now</span>
+            </Link>
             <a
               href="tel:+15551234567"
-              className="bg-yellow-400 text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-300 transition-all flex items-center space-x-2"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-rich-black-900 transition-all flex items-center space-x-2"
             >
               <Phone className="w-5 h-5" />
-              <span>Call Now: (555) 123-4567</span>
+              <span>Call Now</span>
             </a>
-            
-            <a
-              href="mailto:emergency@chpremierservices.com"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-slate-900 transition-all flex items-center space-x-2"
-            >
-              <Mail className="w-5 h-5" />
-              <span>Emergency Email</span>
-            </a>
-          </div>
-          
-          <div className="text-center mt-8">
-            <p className="text-gray-300">
-              Emergency line available 24/7 for existing clients and urgent situations
-            </p>
           </div>
         </div>
       </section>

@@ -11,7 +11,7 @@ const Services = () => {
       features: ['Professional chauffeurs', 'Premium vehicles', 'Airport transfers', 'Special events'],
       image: 'https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=600',
       link: '/services/limo',
-      color: 'from-blue-600 to-blue-800'
+      color: 'from-gold-400 to-gold-600'
     },
     {
       icon: <Anchor className="w-12 h-12" />,
@@ -20,7 +20,7 @@ const Services = () => {
       features: ['Private yachts', 'Sunset cruises', 'Event hosting', 'Water sports'],
       image: 'https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=600',
       link: '/services/boat-charters',
-      color: 'from-teal-600 to-teal-800'
+      color: 'from-gold-500 to-gold-700'
     },
     {
       icon: <Package className="w-12 h-12" />,
@@ -29,7 +29,7 @@ const Services = () => {
       features: ['Express delivery', 'Secure handling', 'Real-time tracking', 'Business solutions'],
       image: 'https://images.pexels.com/photos/4391470/pexels-photo-4391470.jpeg?auto=compress&cs=tinysrgb&w=600',
       link: '/services/courier',
-      color: 'from-green-600 to-green-800'
+      color: 'from-gold-600 to-gold-800'
     }
   ];
 
@@ -54,15 +54,15 @@ const Services = () => {
   return (
     <div className="pt-24">
       {/* Hero Section */}
-      <section className="relative py-20 bg-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-800/80"></div>
+      <section className="relative py-20 bg-rich-black-900 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-rich-black-900/95 via-rich-black-800/90 to-rich-black-900/95"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
           style={{ backgroundImage: 'url(https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1920)' }}
         ></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Premium Services</h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 font-luxury">Our Premium Services</h1>
           <p className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed">
             Discover our comprehensive range of luxury transportation, exclusive charter, 
             and reliable courier services designed to exceed your expectations.
@@ -71,11 +71,11 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gradient-to-b from-rich-black-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all transform hover:-translate-y-2">
+              <div key={index} className="bg-white rounded-2xl shadow-gold-lg overflow-hidden hover:shadow-gold-lg transition-all transform hover:-translate-y-2 border border-gold-100">
                 <div className="relative">
                   <img 
                     src={service.image} 
@@ -91,13 +91,13 @@ const Services = () => {
                 </div>
                 
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4">{service.title}</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+                  <h3 className="text-2xl font-bold text-rich-black-900 mb-4">{service.title}</h3>
+                  <p className="text-rich-black-600 mb-6 leading-relaxed">{service.description}</p>
                   
                   <ul className="space-y-2 mb-6">
                     {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center text-gray-600">
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full mr-3"></div>
+                      <li key={i} className="flex items-center text-rich-black-600">
+                        <div className="w-2 h-2 bg-gold-400 rounded-full mr-3"></div>
                         {feature}
                       </li>
                     ))}
@@ -105,7 +105,7 @@ const Services = () => {
                   
                   <Link
                     to={service.link}
-                    className="inline-flex items-center justify-center w-full bg-slate-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-800 transition-all group"
+                    className="inline-flex items-center justify-center w-full bg-rich-black-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-rich-black-800 transition-all group shadow-gold"
                   >
                     Learn More
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -121,8 +121,8 @@ const Services = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Why Choose Our Services?</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold text-rich-black-900 mb-4 font-luxury">Why Choose Our Services?</h2>
+            <p className="text-xl text-rich-black-600 max-w-3xl mx-auto">
               Experience the difference that comes with choosing a premium service provider 
               committed to excellence in every detail.
             </p>
@@ -131,11 +131,11 @@ const Services = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
               <div key={index} className="text-center p-6">
-                <div className="bg-yellow-400 text-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="bg-gradient-to-r from-gold-400 to-gold-500 text-rich-black-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-gold">
                   {benefit.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-4">{benefit.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+                <h3 className="text-xl font-semibold text-rich-black-900 mb-4">{benefit.title}</h3>
+                <p className="text-rich-black-600 leading-relaxed">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -143,10 +143,10 @@ const Services = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-20 bg-gradient-to-b from-rich-black-900 to-rich-black-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">How It Works</h2>
+            <h2 className="text-4xl font-bold mb-4 font-luxury">How It Works</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Our streamlined process ensures a seamless experience from booking to completion.
             </p>
@@ -160,7 +160,7 @@ const Services = () => {
               { step: '04', title: 'Enjoy Excellence', description: 'Experience our premium service' }
             ].map((item, index) => (
               <div key={index} className="text-center">
-                <div className="bg-yellow-400 text-slate-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                <div className="bg-gradient-to-r from-gold-400 to-gold-500 text-rich-black-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold shadow-gold">
                   {item.step}
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
@@ -172,23 +172,23 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-yellow-400">
+      <section className="py-20 bg-gradient-to-r from-gold-400 to-gold-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">Ready to Experience Premium Service?</h2>
-          <p className="text-xl text-slate-700 mb-8 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-rich-black-900 mb-4 font-luxury">Ready to Experience Premium Service?</h2>
+          <p className="text-xl text-rich-black-700 mb-8 max-w-3xl mx-auto">
             Contact us today to discuss your requirements and receive a personalized quote 
             for any of our luxury services.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/booking"
-              className="bg-slate-900 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-slate-800 transition-all"
+              className="bg-rich-black-900 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-rich-black-800 transition-all shadow-lg"
             >
               Book Service Now
             </Link>
             <Link
               to="/contact"
-              className="border-2 border-slate-900 text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-slate-900 hover:text-white transition-all"
+              className="border-2 border-rich-black-900 text-rich-black-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-rich-black-900 hover:text-white transition-all"
             >
               Get Custom Quote
             </Link>
