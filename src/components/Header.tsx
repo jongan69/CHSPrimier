@@ -14,6 +14,11 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
   const navigation = useMemo(() => [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
@@ -49,36 +54,38 @@ const Header = () => {
         ? 'bg-rich-black-900/95 backdrop-blur-md shadow-lg border-b border-gold-400/20'
         : 'bg-rich-black-900/90 backdrop-blur-md'
     }`}>
-      {/* Top Bar */}
+      {/* Top Bar - Hidden on mobile when scrolled, always visible on desktop */}
       <div className={`text-white px-4 text-sm transition-all duration-300 ${
-        isScrolled ? 'h-0 overflow-hidden opacity-0' : 'h-auto opacity-100'
+        isScrolled 
+          ? 'h-0 overflow-hidden opacity-0 md:h-auto md:opacity-100' 
+          : 'h-auto opacity-100'
       }`}>
-        <div className="max-w-7xl mx-auto flex justify-between items-center py-2">
-          <div className="flex items-center gap-6 text-gray-300">
-            <span className="flex items-center gap-2">
-              <Phone className="w-4 h-4" />
-              (555) 123-4567
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center py-2 gap-2 sm:gap-0">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-gray-300 text-center sm:text-left">
+            <span className="flex items-center gap-2 text-xs sm:text-sm">
+              <Phone className="w-3 h-3 sm:w-4 sm:h-4" />
+              <a href="tel:5551234567" className="hover:text-gold-400 transition">(555) 123-4567</a>
             </span>
-            <span className="flex items-center gap-2">
-              <Mail className="w-4 h-4" />
-              info@chpremierservices.com
+            <span className="flex items-center gap-2 text-xs sm:text-sm">
+              <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
+              <a href="mailto:info@chpremierservices.com" className="hover:text-gold-400 transition">info@chpremierservices.com</a>
             </span>
           </div>
-          <span className="text-gold-400 font-semibold">24/7 Premium Service</span>
+          <span className="text-gold-400 font-semibold text-xs sm:text-sm">24/7 Premium Service</span>
         </div>
       </div>
 
       {/* Main Navigation */}
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-6">
+        <div className="flex justify-between items-center py-4 sm:py-6">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-4">
-            <div className="bg-gradient-to-r from-gold-400 to-gold-500 text-rich-black-900 font-extrabold text-2xl px-3 py-2 rounded-xl shadow-gold">
+          <Link to="/" className="flex items-center gap-2 sm:gap-4 min-w-0">
+            <div className="bg-gradient-to-r from-gold-400 to-gold-500 text-rich-black-900 font-extrabold text-xl sm:text-2xl px-2 sm:px-3 py-1 sm:py-2 rounded-xl shadow-gold flex-shrink-0">
               CH
             </div>
-            <div className="text-white leading-tight">
-              <div className="font-extrabold text-xl font-luxury">Premier Services</div>
-              <div className="text-sm text-gold-300">Luxury • Reliability • Excellence</div>
+            <div className="text-white leading-tight min-w-0">
+              <div className="font-extrabold text-lg sm:text-xl font-luxury truncate">Premier Services</div>
+              <div className="text-xs sm:text-sm text-gold-300 hidden sm:block">Luxury • Reliability • Excellence</div>
             </div>
           </Link>
 
@@ -138,7 +145,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white"
+            className="md:hidden text-white p-2 -m-2 rounded-lg hover:bg-white/10 transition-colors"
             aria-label="Toggle menu"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
@@ -148,36 +155,73 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-rich-black-900/95 backdrop-blur border-t border-gold-400/20 py-4">
+          <div className="md:hidden bg-rich-black-900/95 backdrop-blur border-t border-gold-400/20 py-4 max-h-[calc(100vh-120px)] overflow-y-auto">
             {navigation.map((item) => (
-              <div key={item.name} className="mb-2">
-                <Link
-                  to={item.path}
-                  className={`block px-4 py-3 text-white font-medium transition hover:text-gold-400 ${
-                    isActiveRoute(item.path) ? 'text-gold-400' : ''
-                  }`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-                {item.submenu && (
-                  <div className="ml-4 pl-4 border-l border-gold-400/30">
-                    {item.submenu.slice(1).map((subItem) => (
-                      <Link
-                        key={subItem.name}
-                        to={subItem.path}
-                        className={`block py-2 text-sm text-gray-300 hover:text-gold-400 transition ${
-                          location.pathname === subItem.path ? 'text-gold-400' : ''
-                        }`}
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {subItem.name}
-                      </Link>
-                    ))}
+              <div key={item.name} className="mb-1">
+                {item.submenu ? (
+                  <div>
+                    <button
+                      onClick={() => toggleDropdown(item.name)}
+                      className={`w-full text-left px-4 py-3 text-white font-medium transition hover:text-gold-400 flex items-center justify-between ${
+                        isActiveRoute(item.path) ? 'text-gold-400' : ''
+                      }`}
+                    >
+                      {item.name}
+                      <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-200 ${
+                      activeDropdown === item.name ? 'max-h-96' : 'max-h-0'
+                    }`}>
+                      <div className="ml-4 pl-4 border-l border-gold-400/30 pb-2">
+                        {item.submenu.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            to={subItem.path}
+                            className={`block py-2 text-sm text-gray-300 hover:text-gold-400 transition ${
+                              location.pathname === subItem.path ? 'text-gold-400 font-medium' : ''
+                            }`}
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   </div>
+                ) : (
+                  <Link
+                    to={item.path}
+                    className={`block px-4 py-3 text-white font-medium transition hover:text-gold-400 ${
+                      isActiveRoute(item.path) ? 'text-gold-400' : ''
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
                 )}
               </div>
             ))}
+            
+            {/* Mobile Contact Info */}
+            <div className="px-4 py-4 border-t border-gold-400/20 mt-4">
+              <div className="flex flex-col gap-3 text-sm">
+                <a 
+                  href="tel:5551234567" 
+                  className="flex items-center gap-2 text-gray-300 hover:text-gold-400 transition"
+                >
+                  <Phone className="w-4 h-4" />
+                  (555) 123-4567
+                </a>
+                <a 
+                  href="mailto:info@chpremierservices.com" 
+                  className="flex items-center gap-2 text-gray-300 hover:text-gold-400 transition"
+                >
+                  <Mail className="w-4 h-4" />
+                  info@chpremierservices.com
+                </a>
+              </div>
+            </div>
+            
             <Link
               to="/booking"
               className="block mt-4 mx-4 bg-gradient-to-r from-gold-400 to-gold-500 text-rich-black-900 text-center px-6 py-3 rounded-xl font-semibold shadow-gold hover:shadow-gold-lg transition"

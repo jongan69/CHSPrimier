@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Shield, Clock, Award } from 'lucide-react';
 import TestimonialsSlider from '../components/TestimonialsSlider';
