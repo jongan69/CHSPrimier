@@ -22,6 +22,12 @@ const Home = () => {
       description: 'Fast, reliable package delivery for individuals and businesses.',
       image: 'https://images.pexels.com/photos/4391470/pexels-photo-4391470.jpeg?auto=compress&cs=tinysrgb&w=600',
       link: '/services/courier'
+    },
+    {
+      title: 'Luxury Concierge',
+      description: 'Personalized lifestyle management and exclusive access to premium experiences.',
+      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600',
+      link: '/services/concierge'
     }
   ];
 
@@ -50,7 +56,7 @@ const Home = () => {
 
   // Staggered animations for different sections
   const heroAnimation = useStaggeredAnimation(3, 200, 300); // Title, subtitle, buttons
-  const servicesAnimation = useStaggeredAnimation(3, 150, 500); // Service cards
+  const servicesAnimation = useStaggeredAnimation(4, 150, 500); // Service cards (updated to 4)
   const featuresAnimation = useStaggeredAnimation(4, 100, 800); // Feature cards
 
   return (
@@ -77,7 +83,7 @@ const Home = () => {
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
           }`}>
-            Experience unparalleled luxury with our comprehensive transportation, charter, and courier services. 
+            Experience unparalleled luxury with our comprehensive transportation, charter, courier, and concierge services. 
             Where elegance meets reliability.
           </p>
           <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-700 ease-out delay-400 ${
@@ -108,12 +114,12 @@ const Home = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-rich-black-900 mb-4 font-luxury">Our Premium Services</h2>
             <p className="text-xl text-rich-black-600 max-w-3xl mx-auto">
-              From luxury transportation to exclusive charters and reliable courier services, 
+              From luxury transportation to exclusive charters, reliable courier services, and personalized concierge experiences, 
               we deliver excellence in every experience.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <div 
                 key={index} 

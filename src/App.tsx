@@ -8,6 +8,7 @@ import Services from './pages/Services';
 import LimoServices from './pages/LimoServices';
 import BoatCharters from './pages/BoatCharters';
 import CourierServices from './pages/CourierServices';
+import ConciergeServices from './pages/ConciergeServices';
 import Booking from './pages/Booking';
 import Contact from './pages/Contact';
 
@@ -97,6 +98,11 @@ const AnimatedRoutes = () => {
         <Route path="/services/courier" element={
           <PageTransition>
             <CourierServices />
+          </PageTransition>
+        } />
+        <Route path="/services/concierge" element={
+          <PageTransition>
+            <ConciergeServices />
           </PageTransition>
         } />
         <Route path="/booking" element={

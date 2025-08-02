@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Anchor, Users, Clock, Star, Waves, Compass, Sun, Camera } from 'lucide-react';
 

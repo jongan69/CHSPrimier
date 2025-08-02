@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Shield, Clock, Award, Car, MapPin, Phone, Mail } from 'lucide-react';
+import { Star, Shield, Clock, Award } from 'lucide-react';
 
 const LimoServices = () => {
   const features = [

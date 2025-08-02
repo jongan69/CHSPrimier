@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Clock, MapPin, Users, Car, Anchor, Package, Phone, Mail } from 'lucide-react';
+import { Calendar, Clock, MapPin, Users, Car, Anchor, Package, Crown, Phone, Mail } from 'lucide-react';
 
 const Booking = () => {
   const [formData, setFormData] = useState({
@@ -36,7 +36,8 @@ const Booking = () => {
   const services = [
     { value: 'limo', label: 'Limousine Service', icon: <Car className="w-5 h-5" /> },
     { value: 'boat', label: 'Boat Charter', icon: <Anchor className="w-5 h-5" /> },
-    { value: 'courier', label: 'Courier Service', icon: <Package className="w-5 h-5" /> }
+    { value: 'courier', label: 'Courier Service', icon: <Package className="w-5 h-5" /> },
+    { value: 'concierge', label: 'Luxury Concierge', icon: <Crown className="w-5 h-5" /> }
   ];
 
   return (
@@ -46,7 +47,7 @@ const Booking = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 font-luxury">Book Your Premium Service</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Reserve your luxury transportation, boat charter, or courier service with our easy booking system.
+            Reserve your luxury transportation, boat charter, courier service, or concierge experience with our easy booking system.
           </p>
         </div>
       </section>
@@ -59,7 +60,7 @@ const Booking = () => {
               {/* Service Selection */}
               <div>
                 <h2 className="text-2xl font-bold text-rich-black-900 mb-6">Select Your Service</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {services.map((service) => (
                     <label
                       key={service.value}

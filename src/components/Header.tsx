@@ -30,6 +30,7 @@ const Header = () => {
         { name: 'Limousine Service', path: '/services/limo' },
         { name: 'Boat Charters', path: '/services/boat-charters' },
         { name: 'Courier Services', path: '/services/courier' },
+        { name: 'Luxury Concierge', path: '/services/concierge' },
       ]
     },
     { name: 'Booking', path: '/booking' },

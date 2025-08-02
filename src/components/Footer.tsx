@@ -19,7 +19,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-300 mb-4">
-              Your premier destination for luxury transportation, exclusive boat charters, and reliable courier services.
+              Your premier destination for luxury transportation, exclusive boat charters, reliable courier services, and personalized concierge experiences.
             </p>
             <div className="flex space-x-4">
               <Facebook className="w-5 h-5 text-gray-400 hover:text-gold-400 cursor-pointer transition-colors" />
@@ -36,6 +36,7 @@ const Footer = () => {
               <li><Link to="/services/limo" className="text-gray-300 hover:text-gold-400 transition-colors">Luxury Limousines</Link></li>
               <li><Link to="/services/boat-charters" className="text-gray-300 hover:text-gold-400 transition-colors">Boat Charters</Link></li>
               <li><Link to="/services/courier" className="text-gray-300 hover:text-gold-400 transition-colors">Courier Services</Link></li>
+              <li><Link to="/services/concierge" className="text-gray-300 hover:text-gold-400 transition-colors">Luxury Concierge</Link></li>
               <li><Link to="/booking" className="text-gray-300 hover:text-gold-400 transition-colors">Book Now</Link></li>
             </ul>
           </div>

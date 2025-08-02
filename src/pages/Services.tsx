@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Car, Anchor, Package, Clock, Shield, Star } from 'lucide-react';
+import { ArrowRight, Car, Anchor, Package, Clock, Shield, Star, Crown } from 'lucide-react';
 
 const Services = () => {
   const services = [
@@ -30,6 +30,15 @@ const Services = () => {
       image: 'https://images.pexels.com/photos/4391470/pexels-photo-4391470.jpeg?auto=compress&cs=tinysrgb&w=600',
       link: '/services/courier',
       color: 'from-gold-600 to-gold-800'
+    },
+    {
+      icon: <Crown className="w-12 h-12" />,
+      title: 'Luxury Concierge',
+      description: 'Personalized lifestyle management and exclusive access to premium experiences.',
+      features: ['Event planning', 'Travel arrangements', 'Lifestyle management', 'VIP access'],
+      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600',
+      link: '/services/concierge',
+      color: 'from-gold-700 to-gold-900'
     }
   ];
 
@@ -73,7 +82,7 @@ const Services = () => {
       {/* Services Grid */}
       <section className="py-20 bg-gradient-to-b from-rich-black-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <div key={index} className="bg-white rounded-2xl shadow-gold-lg overflow-hidden hover:shadow-gold-lg transition-all transform hover:-translate-y-2 border border-gold-100">
                 <div className="relative">

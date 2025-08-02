@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Shield, Clock, Award, Users, MapPin, Phone, Mail } from 'lucide-react';
+import { Star, Shield, Clock, Award } from 'lucide-react';
 
 const About = () => {
   const stats = [
@@ -68,7 +67,7 @@ const About = () => {
           <h1 className="text-5xl md:text-6xl font-bold mb-6 font-luxury">About CH Premier Services</h1>
           <p className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed">
             We are a premier luxury service provider committed to delivering exceptional experiences 
-            through our comprehensive transportation, charter, and courier services.
+            through our comprehensive transportation, charter, courier, and concierge services.
           </p>
         </div>
       </section>

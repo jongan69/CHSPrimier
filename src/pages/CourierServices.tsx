@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Package, Clock, Shield, Star, MapPin, Zap, CheckCircle } from 'lucide-react';
+import { Package, Clock, Shield, Star, MapPin, Zap, CheckCircle } from 'lucide-react';
 
 const CourierServices = () => {
   const features = [
